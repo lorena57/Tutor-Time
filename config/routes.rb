@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'static_pages/home'
-  
   #Home page
   root 'static_pages#home'
 
@@ -10,7 +8,7 @@ Rails.application.routes.draw do
   post '/signup' => 'students#create'
 
   #Logout route
-  delete '/logout' => 'sessions#destroy'
+  delete '/logout' => 'sessions#destroy' 
 
   resources :appointments
   resources :tutors

@@ -1,23 +1,25 @@
 <h1>Signup</h1>
 
-<%= form_for(@student, url:'signup') do |f| %>
+<h3>Sign up new students</h3>
+
+<%# <%= form_for(@student, url:'signup') do |f| %>
 
 
-    <%= f.label :username %>
-    <%= f. text_field :username %>
-<br>
+    <%# <%= f.label :username %>
+    <%# <%= f. text_field :username %> 
+<%# <br>
 <br>
     <%= f.label :email %>
-    <%= f.email_field :email, required:true %>
-<br>
-<br>
-    <%= f.label :password %>
-    <%= f.password_field :password%>
-<br>
-<br>
-    <%= f.label :date %>
-    <%= f.date_select {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>
+    <%# <%= f.email_field :email, required:true %> 
+<%# <br>
+<br> %>
+    <%# <%= f.label :password %>
+    <%# <%= f.password_field :password%>  
+<%# <br>
+<br> %>
+    <%# <%= f.label :date %>
+    <%# <%= f.date_select {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>  
 
-    <%= f.submit "Submit" %>
+    <%# <%= f.submit "Submit" %>
 
-<% end %>
+<%# <% end %>  
