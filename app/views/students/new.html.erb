@@ -1,25 +1,24 @@
 <h1>Signup</h1>
 
-<h3>Sign up new students</h3>
+<div class='row'>
+<div class='col-md-6 col-md-offset-3'>
+    <%= form_for(@student, url:'signup') do |f| %>
 
-<%# <%= form_for(@student, url:'signup') do |f| %>
+        <%= f.label :username %>
+        <%= f. text_field :username %> 
 
+        <%= f.label :email %>
+        <%= f.email_field :email, required:true %> 
 
-    <%# <%= f.label :username %>
-    <%# <%= f. text_field :username %> 
-<%# <br>
-<br>
-    <%= f.label :email %>
-    <%# <%= f.email_field :email, required:true %> 
-<%# <br>
-<br> %>
-    <%# <%= f.label :password %>
-    <%# <%= f.password_field :password%>  
-<%# <br>
-<br> %>
-    <%# <%= f.label :date %>
-    <%# <%= f.date_select {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>  
+        <%= f.label :password %>
+        <%= f.password_field :password%>  
 
-    <%# <%= f.submit "Submit" %>
+        <%# <%= f.label :date %>
+        <%# <%= f.date_select {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>  
 
-<%# <% end %>  
+        <%= f.submit "Submit", class: 'btn btn-primary' %>
+
+<% end  %>
+</div>
+
+</div>
