@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
 
+    before_action :logged_in_student, only: [:edit, :update]
+    before_action :correct_student, only: [:edit, :update]
+
     def show
         @student = Student.find(params[:id])
     end
@@ -21,7 +24,17 @@ class StudentsController < ApplicationController
 
     def edit
         @student = Student.find(params[:id])
-    end    
+    end   
+    
+    def update
+        @student = Student.find(params[:id])
+        if @student.update_attributes(student_params)
+            flash[:success] = 'Profile updated'
+            redirect_to @student
+        else
+            render 'edit'
+        end
+    end
 
     end
 
@@ -30,6 +43,20 @@ class StudentsController < ApplicationController
         def student_params
             params.require(:student).permit(:username, :email, :password)
         end
+
+        def logged_in_student
+            unless logged_in?
+                flash[:danger] = "Please log in."
+                redirect_to login_url
+             end
+        end
+
+        def correct_student
+            @student = Student.find(params[:id])
+            redirect_to(root_url) unless current_student?(@student)
+            
+        end
+
 
 
 

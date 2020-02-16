@@ -9,6 +9,10 @@ module SessionsHelper
       @current_student ||= Student.find_by(id: session[:student_id])
     end
   end
+
+  def current_student?(student)
+    student && student == current_student
+  end
  
   def logged_in?
     !current_student.nil?
