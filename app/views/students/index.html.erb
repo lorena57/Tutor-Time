@@ -4,6 +4,9 @@
 <% @students.each do |pupil| %>
     <li>
         <%= link_to pupil.username, pupil %>
+        <%= if current_student? && !current_student?(student) %>
+        | <%= link_to 'delete', student, method: :delete %>
+        <% end %>
     </li>
     <% end %>
 </ul>
