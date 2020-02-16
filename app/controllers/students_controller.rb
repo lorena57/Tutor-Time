@@ -11,18 +11,19 @@ class StudentsController < ApplicationController
     def create
         @student = Student.new(student_params)
         if @student.save
-            session[:student_id] = @student.id
+            flash[:success]= "Welcome to Tutor-Time!"
+            # session[:student_id] = @student.id
             redirect_to @student
         else
-            render :new
+            render 'new'
         end
     end
 
     private
 
-    def student_params
-        params.require(:student).permit(:username, :email, :password)
-    end
+        def student_params
+            params.require(:student).permit(:username, :email, :password)
+        end
 
 
 

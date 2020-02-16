@@ -15,6 +15,7 @@ class Student < ApplicationRecord
     has_many :tutors, through: :appointments
 
     has_secure_password
-    validates :password, length: { maximum: 7 }
+    validates :password, presence: true, length: { minimum: 5 }
+
 
 end

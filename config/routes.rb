@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
   #Signup route
   get 'signup' => 'students#new'
-  post '/signup' => 'students#create'
+  # post '/signup' => 'students#create'
 
   #Login route
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
 
   resources :appointments

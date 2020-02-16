@@ -6,11 +6,11 @@ class SessionsController < ApplicationController
   def create
     student = Student.find_by(email: params[:session][:email].downcase)
     if student && student.authenticate(params[:session][:password])
-        log_in student
-        redirect_to student
+      log_in student
+       redirect_to student
     else
-      flash[:danger] = 'Invalid email/password combination'
-      redirect_to login_path
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'new'
     end
   end
 
