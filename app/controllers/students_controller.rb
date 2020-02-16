@@ -1,7 +1,11 @@
 class StudentsController < ApplicationController
 
-    before_action :logged_in_student, only: [:edit, :update]
+    before_action :logged_in_student, only: [:index, :edit, :update]
     before_action :correct_student, only: [:edit, :update]
+
+    def index
+        @students = Student.all
+    end
 
     def show
         @student = Student.find(params[:id])
