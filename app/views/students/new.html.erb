@@ -1,25 +1,16 @@
-<h1>Signup</h1>
 
-<div class='row'>
-    <div class='col-md-6 col-md-offset-3'>
-        <%= form_for(@student) do |f| %>
-            <%= render 'shared/error_messages' %>
 
-            <%= f.label :username %>
-            <%= f. text_field :username, class: 'form-control' %> 
 
-            <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control'%> 
-
-            <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control'%>  
 
         <%# <%= f.label :date %>
         <%# <%= f.date_select {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100}, {required: true} %>  
-            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
-            <%= f.submit "Submit", class: 'btn btn-primary' %>
 
-        <% end %>
-    </div>
+<% provide(:title, 'Sign up') %>
+<% provide(:button_text, 'Create my account') %>
+<h1>Sign up</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'form' %>
+  </div>
 </div>

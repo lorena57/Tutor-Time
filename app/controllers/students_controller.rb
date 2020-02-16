@@ -11,12 +11,18 @@ class StudentsController < ApplicationController
     def create
         @student = Student.new(student_params)
         if @student.save
+            log_in @student
             flash[:success]= "Welcome to Tutor-Time!"
             # session[:student_id] = @student.id
             redirect_to @student
         else
             render 'new'
         end
+
+    def edit
+        @student = Student.find(params[:id])
+    end    
+
     end
 
     private
