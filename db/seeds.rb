@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Student.create!(username: "Example User",
+Student.create!(username: "Lorena",
              email: "lorena@lorena.com",
              password: "password",
              admin: true
@@ -21,3 +21,11 @@ Student.create!(username: "Example User",
                email: email,
                password: password)
 end
+
+# students = Student.take(6)
+
+# 11.times do
+#   appointment_time = '24 Sep 2014'
+#   students.each { |student| student.appointments.create!(appointment_time: appointment_time)}
+# end
+

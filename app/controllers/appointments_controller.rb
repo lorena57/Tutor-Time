@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.new
     end
 
-    def create
-         
+    def show
+        @appointment = Appointment.find(params[:id])
     end
 end

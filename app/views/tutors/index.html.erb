@@ -1,0 +1,8 @@
+
+<h1> Tutors </h1>
+<h4><% @tutors.each do |tutor| %>
+  <%= link_to tutor.name, tutor_path(tutor) %></h4>
+  
+<% end %>
+
+  
