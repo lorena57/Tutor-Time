@@ -1,6 +1,12 @@
 <h1>Welcome <%= @student.username %> </h1>
 
-<h5>Today you have the following appoinments with the tutors:</h5>
+<h5>Today you have the following appoinments with:</h5>
+
+<% @student.appointments.each do |appointment| %>
+  <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
+  <%= link_to @student_tutor.name, tutor_path(@student_tutor) %> - <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), appointment_path(appointment) %><br>
+<% end %>
+
 
 
 <h5>Book a tutoring session?</h5>

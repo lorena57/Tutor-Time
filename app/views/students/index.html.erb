@@ -12,4 +12,13 @@
     <% end %>
 </ul>
 
+
+<h1> students </h1>
+<ul class="students">
+<% @students.each do |pupil| %>
+  <li><%= link_to pupil.username, student_path(pupil) %> | Number of Tutor sessions: <%= pupil.appointments.count %></li>
+<br>
+<% end %>
+</ul>
+
   
