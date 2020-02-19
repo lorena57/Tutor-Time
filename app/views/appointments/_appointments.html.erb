@@ -1,0 +1,10 @@
+<%= form_for @appointment do |f| %>
+
+        <%= f.label "Select Subject" %>
+        <%= f.select :tutor_id, options_from_collection_for_select(Tutor.all, "id", "SME") %>
+
+        <%= f.label :date %>
+        <%= f.date_select :appointment_time, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 5}, {required: true} %>
+
+<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
