@@ -1,24 +1,13 @@
 <h1>All students</h1>
 
-<ul class="students">
-    <% @students.each do |pupil| %>
-        <li>
-            <%= link_to pupil.username, pupil %>
-                <% if current_student.admin? && current_student !=pupil%>
-                | <%= link_to 'delete', student_path(pupil), method: :delete, data: {confirm: "You sure?"} %>
-                <% end %>
-        </li>
-   
-    <% end %>
+<%= will_paginate %>
+
+<ul class="users">
+   <%= render @students %>
 </ul>
 
+<%= will_paginate %>
 
-<h1> students </h1>
-<ul class="students">
-<% @students.each do |pupil| %>
-  <li><%= link_to pupil.username, student_path(pupil) %> | Number of Tutor sessions: <%= pupil.appointments.count %></li>
-<br>
-<% end %>
-</ul>
+
 
   

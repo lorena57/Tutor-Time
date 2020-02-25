@@ -11,7 +11,7 @@ class Student < ApplicationRecord
     validates :username, presence: true
     validates :email, presence: true                
 
-    has_many :appointments
+    has_many :appointments, dependent: :destroy
     has_many :tutors, through: :appointments
 
     has_secure_password

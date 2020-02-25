@@ -4,20 +4,16 @@ class StudentsController < ApplicationController
     before_action :correct_student, only: [:edit, :update]
     before_action :admin_student, only: :destroy
 
-    def index
-        @students = Student.all
-    end
-
-    def show
-        @student = Student.find(params[:id])
-    end
+    # def index
+    #     @students = Student.paginate(page: params[:page])
+    # end
 
     def new
         @student = Student.new
     end
 
     def create
-        @student = Student.new(student_params)
+        @student = Student.create(student_params)
         if @student.save
             log_in @student
             flash[:success]= "Welcome to Tutor-Time!"
@@ -26,7 +22,11 @@ class StudentsController < ApplicationController
         else
             render 'new'
         end
+    end
 
+    def show
+        @student = Student.find(params[:id])
+        # @appointments = @student.appointments.paginate(page: params[:page])
     end
 
     def edit
@@ -35,7 +35,8 @@ class StudentsController < ApplicationController
     
     def update
         @student = Student.find(params[:id])
-        if @student.update_attributes(student_params)
+        @student.update(student_params)
+        if @student.save
             flash[:success] = 'Profile updated'
             redirect_to @student
         else
@@ -43,11 +44,11 @@ class StudentsController < ApplicationController
         end
     end
 
-    def destroy
-        Student.find(params[:id]).destroy
-        flash[:success] = "Student deleted"
-        redirect_to students_url
-    end
+    # def destroy
+    #     Student.find(params[:id]).destroy
+    #     flash[:success] = "Student deleted"
+    #     redirect_to students_url
+    # end
 
 
     
@@ -58,12 +59,7 @@ class StudentsController < ApplicationController
             params.require(:student).permit(:username, :email, :password)
         end
 
-        def logged_in_student
-            unless logged_in?
-                flash[:danger] = "Please log in."
-                redirect_to login_url
-             end
-        end
+
 
         def correct_student
             @student = Student.find(params[:id])

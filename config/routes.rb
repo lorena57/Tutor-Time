@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new'
+  # get 'sessions/new'
 
   #Home page
   root 'static_pages#home'
+
+  resources :tutors
+  resources :students do
+    resources :appointments
+  end
 
   #Signup route
   get 'signup' => 'students#new'
@@ -15,8 +20,15 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
 
 
-  resources :appointments
-  resources :tutors
-  resources :students
+  # resources :students, only: [:show] do
+  #   resources :appointments, only: [:show, :index]
+  # end
+
+  # resources :appointments, only: [:create, :destroy]
+
+ 
+  
+  # resources :tutors
+  # resources :students
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

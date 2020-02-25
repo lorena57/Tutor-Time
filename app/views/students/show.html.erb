@@ -1,6 +1,22 @@
 <h1>Welcome <%= @student.username %> </h1>
 
-<h5>Today you have the following appoinments with:</h5>
+<%# 
+<div>
+  <aside class ='col-md-4'>
+    <section class='student_info'>
+      <h1> %>
+        <%# <%= gravatar_for @student %> 
+        <%# <%= @student.username %> 
+      <%# </h1>
+    </section>
+  </aside> %>
+
+
+
+<%# </div> %>
+
+
+<h5>Today you have the following appointments with:</h5>
 
 <% @student.appointments.each do |appointment| %>
   <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
@@ -8,5 +24,5 @@
 <% end %>
 
 
+<%= link_to 'Book Appointment', student_appointments_path, class: 'btn btn-primary' %>
 
-<h5>Book a tutoring session?</h5>

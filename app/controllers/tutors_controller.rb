@@ -5,6 +5,17 @@ class TutorsController < ApplicationController
     end
 
     def show
-        @tutor = Tutor.find(params[:id])
+        @tutor = Tutor.find(id: params[:id])
+    end
+
+    def new
+        @tutor = Tutor.new
+    end
+
+    def create
+        @tutor = Tutor.create(tutor_params)
+        if @tutor.save
+            flash[:success] = "New tutor added"
+            redirect_to 
     end
 end

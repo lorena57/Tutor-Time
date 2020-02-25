@@ -26,6 +26,9 @@ gem 'faker', '~> 1.6', '>= 1.6.6'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'omniauth-google-oauth2'
 
+gem 'will_paginate',           '3.1.8'
+gem 'bootstrap-will_paginate', '1.0.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
