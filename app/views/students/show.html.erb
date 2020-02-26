@@ -18,11 +18,10 @@
 
 <h5>Today you have the following appointments with:</h5>
 
-<% @student.appointments.each do |appointment| %>
-  <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
-  <%= link_to @student_tutor.name, tutor_path(@student_tutor) %> - <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), appointment_path(appointment) %><br>
-<% end %>
 
 
-<%= link_to 'Book Appointment', student_appointments_path, class: 'btn btn-primary' %>
+
+
+
+<%= link_to 'Book Appointment', new_student_appointment_path(@student), class: 'btn btn-primary' %> 
 

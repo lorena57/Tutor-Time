@@ -5,4 +5,9 @@
  
 
 
-
+<h1> Appointments: </h1>
+<ul>
+<% @appointment.each do |workout| %>
+  <li><h3> <%= link_to workout.appointment_time, appointment_path(workout) %> </h3> </li>
+<% end %>
+</ul>

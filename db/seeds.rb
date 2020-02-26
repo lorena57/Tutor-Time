@@ -6,26 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Student.create!(username: "Lorena",
-             email: "lorena@lorena.com",
-             password: "password",
-             admin: true
-             )
 
-# Generate a bunch of additional users.
-10.times do |n|
-  username  = Faker::Internet.username
-  email = Faker::Internet.email
-  password = "password"
-  Student.create!(username:  username,
-               email: email,
-               password: password)
+
+
+10.times do 
+  Appointment.create({appointment_time: "October 15, 2020 10:48 AM", student_id: 1, tutor_id: 1})
+  student = Student.create({username: Faker::Internet.username, email: Faker::Internet.unique.email, password: "password"})
+  tutor = Tutor.create({name: Faker::Name.unique.name, years_exp: "7", SME: Faker::Educator.subject})
+
 end
-
-# students = Student.take(6)
-
-# 11.times do
-#   appointment_time = '24 Sep 2014'
-#   students.each { |student| student.appointments.create!(appointment_time: appointment_time)}
-# end
 

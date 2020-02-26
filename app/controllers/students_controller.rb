@@ -4,9 +4,9 @@ class StudentsController < ApplicationController
     before_action :correct_student, only: [:edit, :update]
     before_action :admin_student, only: :destroy
 
-    # def index
-    #     @students = Student.paginate(page: params[:page])
-    # end
+    def index
+        @students = Student.all
+    end
 
     def new
         @student = Student.new
