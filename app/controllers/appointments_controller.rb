@@ -17,27 +17,31 @@ class AppointmentsController < ApplicationController
     end
 
 
-    def create
-        @appointment = current_student.appointments.build(appointment_params)
-        if @appointment.save
-            flash[:success]= "Appointment created"
-            redirect_to root_url
-        else
-            render 'static_pages/home'
-        end
-    end
-
     # def create
-    #     @student = Student.find(params[:student_id])
-    #     @appointment = @student.appointments.new(appointment_params)
-    #     @appointment.student = Student.find_by(id: params[:student_id])
+    #     @appointment = current_student.appointments.build(appointment_params)
     #     if @appointment.save
     #         flash[:success]= "Appointment created"
-    #         redirect_to student_appointments_path(@student)
+    #         redirect_to @student
     #     else
-    #         flash[:danger] = "Appointment could not be made."
-    #         render :new
+    #         render 'static_pages/home'
+    #     end
     # end
+
+    def create
+        @student = Student.find(params[:student_id])
+        @appointment = @student.appointments.new(appointment_params)
+        @appointment.student = Student.find_by(id: params[:student_id])
+        if @appointment.save
+            debugger
+            flash[:success]= "Appointment created"
+            redirect_to student_appointments_path(@student)
+            byebug
+        else
+            flash[:danger] = "Appointment could not be made."
+            render :new
+        end
+
+    end
 
     def show
         # @appointment = Appointment.find(params[:id])
