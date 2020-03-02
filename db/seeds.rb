@@ -13,6 +13,5 @@
   Appointment.create({appointment_time: "October 15, 2020 10:48 AM", student_id: 1, tutor_id: 1})
   student = Student.create({username: Faker::Internet.username, email: Faker::Internet.unique.email, password: "password"})
   tutor = Tutor.create({name: Faker::Name.unique.name, years_exp: "7", SME: Faker::Educator.subject})
-
 end
 

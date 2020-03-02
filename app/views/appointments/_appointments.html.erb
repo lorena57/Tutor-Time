@@ -2,12 +2,16 @@
       <%= f.label :date %> 
       <%= f.date_select :appointment_time, {order: [:month, :day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year' }, start_year: Date.today.year, end_year: Date.today.year + 5}, {required: true} %> 
 
-      <%= f.collection_select :tutor_id, Tutor.all, :id, :name, :prompt => true%><br/>
+      <%= f.collection_select :tutor_id, Tutor.all, :id, :SME, :prompt => true%><br/>
       <br/>
       <%= f.submit %>
+
+    
+
+      
+    
    
 <% end %>
-
 
 
 

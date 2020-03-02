@@ -21,7 +21,7 @@
         <%= link_to 'Tutor-Time', root_path, id: 'logo' %>
           <nav>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Home', root_path %></li>
+              <%# <li><%= link_to 'Home', root_path %></li>
                   <% if logged_in? %>
                     <li><%= link_to "Students", students_path %></li>
                     <li><%= link_to "Tutors", tutors_path %></li>

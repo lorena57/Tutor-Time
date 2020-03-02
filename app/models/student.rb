@@ -17,5 +17,6 @@ class Student < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 5 }, allow_blank: true
 
+    accepts_nested_attributes_for :tutors
 
 end

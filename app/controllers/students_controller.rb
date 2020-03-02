@@ -25,8 +25,7 @@ class StudentsController < ApplicationController
     end
 
     def show
-        @student = Student.find(params[:id])
-        # @appointments = @student.appointments.paginate(page: params[:page])
+        @student = Student.find_by_id(params[:id])
     end
 
     def edit
@@ -56,7 +55,7 @@ class StudentsController < ApplicationController
     private
 
         def student_params
-            params.require(:student).permit(:username, :email, :password)
+            params.require(:student).permit(:username, :email, :password, :tutor_id)
         end
 
 

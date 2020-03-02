@@ -1,13 +1,14 @@
 
  
  
-  <h3>by: <%= link_to appointment.student.username, student_appointments_path(appointment.student) %></h3>
  
 
-
-<h1> Appointments: </h1>
-<ul>
-<% @appointment.each do |workout| %>
-  <li><h3> <%= link_to workout.appointment_time, appointment_path(workout) %> </h3> </li>
+<% @app.each do |app|  %>
+<li><%= app.tutor.name %></li>
 <% end %>
-</ul>
+
+
+<% @appointments.each do |app|  %>
+<%= app %>
+<% end %>
+

@@ -6,6 +6,7 @@ class AppointmentsController < ApplicationController
         if params[:student_id]
             @student = Student.find(params[:student_id])
             @appointments = current_student.appointments
+            @app = Appointment.all
         else
             redirect_to root_url
         end
@@ -32,15 +33,12 @@ class AppointmentsController < ApplicationController
         @appointment = @student.appointments.new(appointment_params)
         @appointment.student = Student.find_by(id: params[:student_id])
         if @appointment.save
-            debugger
             flash[:success]= "Appointment created"
             redirect_to student_appointments_path(@student)
-            byebug
         else
             flash[:danger] = "Appointment could not be made."
             render :new
         end
-
     end
 
     def show
@@ -73,11 +71,11 @@ class AppointmentsController < ApplicationController
         
     end
 
-    # def destroy
-    #     Appointment.find(params[:id]).destroy
-    #     flash[:success] = "Appointment deleted"
-    #     redirect_to appointment_url
-    # end
+    def destroy
+        Appointment.find(params[:id]).destroy
+        flash[:success] = "Appointment deleted"
+        redirect_to appointment_url
+    end
 
 
 
@@ -85,6 +83,6 @@ class AppointmentsController < ApplicationController
     private
 
     def appointment_params
-        params.require(:appointment).permit(:appointment_time)
+        params.require(:appointment).permit(:appointment_time, :tutor_id)
     end
 end
