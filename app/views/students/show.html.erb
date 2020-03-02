@@ -20,8 +20,9 @@
 <ul class="students">
 <% @student.appointments.each do |appointment| %>
   <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
- <li> <%= link_to @student_tutor.name, student_appointment_path(@student_tutor) %> - <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), student_appointment_path(appointment) %><br>
+ <li> <%= link_to @student_tutor.name, student_appointment_path(@student_tutor) %> - <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), student_appointment_path(appointment) %> | <%= link_to "Delete Appointment" , @appointments, method: :delete %><br>
 </li>
+  
 
 
 <% end %>

@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :appointments
   end
 
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+
+
+
+
   #Signup route
   get 'signup' => 'students#new'
   # post '/signup' => 'students#create'

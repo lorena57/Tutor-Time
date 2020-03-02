@@ -19,4 +19,11 @@ class Student < ApplicationRecord
 
     accepts_nested_attributes_for :tutors
 
+
+    def self.create_by_google_omniauth(auth)
+    self.find_or_create_by(username: auth[:info][:email]) do |u|
+      u.password = SecureRandom.hex
+    end
+  end
+
 end

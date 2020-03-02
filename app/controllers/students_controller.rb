@@ -46,7 +46,7 @@ class StudentsController < ApplicationController
     # def destroy
     #     Student.find(params[:id]).destroy
     #     flash[:success] = "Student deleted"
-    #     redirect_to students_url
+    #     redirect_to @student
     # end
 
 
@@ -55,7 +55,7 @@ class StudentsController < ApplicationController
     private
 
         def student_params
-            params.require(:student).permit(:username, :email, :password, :tutor_id)
+            params.require(:student).permit(:username, :email, :password, :admin, :tutor_id)
         end
 
 
