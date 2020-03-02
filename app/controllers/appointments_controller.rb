@@ -68,13 +68,13 @@ class AppointmentsController < ApplicationController
     def update
         @student = Student.find(params[:student_id])
         @appointment = Appointment.find(params[:id])
-        
     end
 
     def destroy
         Appointment.find(params[:id]).destroy
         flash[:success] = "Appointment deleted"
-        redirect_to appointment_url
+        redirect_to student_appointments_path(params[:student_id])
+
     end
 
 

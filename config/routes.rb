@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :tutors
-  resources :students do
+  resources :students do 
     resources :appointments
   end
 

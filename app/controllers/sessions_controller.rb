@@ -20,10 +20,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session.delete(:student_id)
+    redirect_to '/'
+  end
+
   def omniauth
     @student = Student.create_by_google_omniauth(auth)
     session[:student_id] = @student.id
-    redirect_to student_path(student)
+    redirect_to student_path(@student)
   end
 
   private
