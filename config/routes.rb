@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :tutors
-  resources :students do 
+  resources :students do
     resources :appointments
   end
 
@@ -33,7 +33,6 @@ Rails.application.routes.draw do
 
  
   
-  # resources :tutors
-  # resources :students
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

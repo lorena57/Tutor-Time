@@ -1,36 +1,19 @@
 <h1>Welcome <%= @student.username %> </h1>
 
-<%# 
-<div>
-  <aside class ='col-md-4'>
-    <section class='student_info'>
-      <h1> %>
-        <%# <%= gravatar_for @student %> 
-        <%# <%= @student.username %> 
-      <%# </h1>
-    </section>
-  </aside> %>
-
-
-
-<%# </div> %>
-
-
 <h5>Today you have the following appointments with:</h5>
+
 <ul class="students">
-<% @student.appointments.each do |appointment| %>
-  <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
- <li> <%= link_to @student_tutor.name, student_appointment_path(@student_tutor) %> - <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), student_appointment_path(appointment) %> | <%= link_to "Delete Appointment" , student_appointment_path(current_student,appointment), method: :delete %><br>
-</li>
-  
-
-
-<% end %>
-
+  <% @student.appointments.each do |appointment| %>
+    <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
+    <li> 
+      <p><%= @student_tutor.name %> - 
+         <%= appointment.appointment_time.strftime("%b %e, %l:%M %p")%>| 
+         <%= link_to "Delete Appointment" , student_appointment_path(current_student,appointment), method: :delete %><br></p>
+    </li>
+  <% end %>
 </ul>
-
-
-
 
 <%= link_to 'Book Appointment', new_student_appointment_path(@student), class: 'btn btn-primary' %> 
 
+<%# <%= link_to @student_tutor.name, student_appointment_path(@student_tutor) %> 
+<%# <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), student_appointment_path(appointment) %>  

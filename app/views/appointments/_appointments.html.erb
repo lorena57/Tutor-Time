@@ -7,6 +7,12 @@
       <%= f.submit %>
 <% end %>
 
+<% if @appointment.errors.any? %>
+  <%@appointment.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <%end%>
+  <% end %>
+
 
 
 

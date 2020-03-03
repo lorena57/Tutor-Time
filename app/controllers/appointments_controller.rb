@@ -34,25 +34,16 @@ class AppointmentsController < ApplicationController
         @appointment.student = Student.find_by(id: params[:student_id])
         if @appointment.save
             flash[:success]= "Appointment created"
-            redirect_to student_appointments_path(@student)
+            redirect_to student_path(@student)
         else
-            flash[:danger] = "Appointment could not be made."
+            flash.now[:danger] = "Appointment could not be made."
             render :new
         end
     end
 
     def show
-        # @appointment = Appointment.find(params[:id])
         @appointment = @student.appointments.find(params[:id])
-
     end
-
-
-
-
-    # def edit
-    #     @appointment = Appointment.find(params[:id])
-    # end
 
     def edit
         @appointment = current_student.appointments.find(params[:id])
@@ -73,12 +64,9 @@ class AppointmentsController < ApplicationController
     def destroy
         Appointment.find(params[:id]).destroy
         flash[:success] = "Appointment deleted"
-        redirect_to student_appointments_path(params[:student_id])
+        redirect_to student_path(params[:student_id])
 
     end
-
-
-
 
     private
 
