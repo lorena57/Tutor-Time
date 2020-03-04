@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
 
-    before_action :logged_in_student, only: [:create, :destroy]
 
     def index
         if params[:student_id]
@@ -46,26 +45,35 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-        @appointment = current_student.appointments.find(params[:id])
+        @appointment = current_student.appointments.find_by(params[:id])
         @student = Student.find(params[:student_id])
     end
-
-    # def update
-    #     @appointment = Appointment.find(params[:id])
-    #     @appointment.update(appointment_params)
-    #     redirect_to student_appointment(@appointment)
-    # end
 
     def update
-        @student = Student.find(params[:student_id])
-        @appointment = Appointment.find(params[:id])
+        @appointment = current_student.appointments.find_by(params[:id])
+        @appointment.update(appointment_params)
+        if @appointment.save
+            flash[:success] = 'Appointment updated'
+            redirect_to student_path(params[:student_id])
+            else
+            render 'edit'
+        end
     end
 
-    def destroy
-        Appointment.find(params[:id]).destroy
-        flash[:success] = "Appointment deleted"
-        redirect_to student_path(params[:student_id])
 
+
+    def destroy
+        #Keep method and dry 
+        @appointment = current_student.appointments.find_by(params[:id])
+        if @appointment
+        @appointment.destroy    
+            flash[:danger] = "Your appointment has been deleted"
+                redirect_to student_path(params[:student_id])
+
+            else
+                
+            redirect_to student_path(params[:student_id])
+        end
     end
 
     private
@@ -73,4 +81,5 @@ class AppointmentsController < ApplicationController
     def appointment_params
         params.require(:appointment).permit(:appointment_time, :tutor_id)
     end
+    
 end

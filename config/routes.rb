@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :tutors
   resources :students do
-    resources :appointments
+    resources :appointments 
   end
 
   get '/auth/google_oauth2/callback' => 'sessions#omniauth'

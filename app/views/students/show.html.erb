@@ -1,14 +1,19 @@
 <h1>Welcome <%= @student.username %> </h1>
 
-<h5>Today you have the following appointments with:</h5>
+<h4>Today you have the following appointments with:</h4>
 
 <ul class="students">
   <% @student.appointments.each do |appointment| %>
     <% @student_tutor = @student.tutors.find(appointment.tutor_id) %>
     <li> 
-      <p><%= @student_tutor.name %> - 
-         <%= appointment.appointment_time.strftime("%b %e, %l:%M %p")%>| 
-         <%= link_to "Delete Appointment" , student_appointment_path(current_student,appointment), method: :delete %><br></p>
+      <p><%= @student_tutor.name %> - <%= @student_tutor.SME %> - 
+         <%= appointment.appointment_time.strftime("%b %e, %l:%M %p")%>| <br>
+         <%= link_to "Delete Appointment" , student_appointment_path(current_student,appointment), method: :delete%> |
+         <%= link_to "Update Appointment" , edit_student_appointment_path(current_student,appointment)%>
+
+         <br></p>
+    
+
     </li>
   <% end %>
 </ul>
@@ -17,3 +22,5 @@
 
 <%# <%= link_to @student_tutor.name, student_appointment_path(@student_tutor) %> 
 <%# <%= link_to appointment.appointment_time.strftime("%b %e, %l:%M %p"), student_appointment_path(appointment) %>  
+
+

@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
-
-    before_action :logged_in_student, only: [:index, :edit, :update, :destroy]
-    before_action :correct_student, only: [:edit, :update]
-    before_action :admin_student, only: :destroy
+    before_action :current_student, only: [:index, :edit, :update, :destroy]
+    # before_action :logged_in_student, only: [:index, :edit, :update, :destroy]
+    # before_action :correct_student, only: [:edit, :update]
+    # before_action :admin_student, only: :destroy
 
     def index
         @students = Student.all
@@ -57,7 +57,6 @@ class StudentsController < ApplicationController
         def student_params
             params.require(:student).permit(:username, :email, :password, :admin, :tutor_id)
         end
-
 
 
         def correct_student
