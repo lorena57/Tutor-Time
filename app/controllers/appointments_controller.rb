@@ -17,15 +17,7 @@ class AppointmentsController < ApplicationController
     end
 
 
-    # def create
-    #     @appointment = current_student.appointments.build(appointment_params)
-    #     if @appointment.save
-    #         flash[:success]= "Appointment created"
-    #         redirect_to @student
-    #     else
-    #         render 'static_pages/home'
-    #     end
-    # end
+
 
     def create
         @student = Student.find(params[:student_id])
@@ -68,10 +60,10 @@ class AppointmentsController < ApplicationController
         if @appointment
             @appointment.destroy    
             flash[:success] = "Your appointment has been deleted"
-            redirect_to student_path(params[:student_id])
+            redirect_to student_path(current_student)
         else
             flash[:danger] = "You do not have access to delete others appointments"
-            redirect_to student_path(params[:student_id])
+            redirect_to student_path(current_student, @appointment)
         end
     end
 
