@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     # before_action :admin_student, only: :destroy
 
     def index
-        @students = Student.all.soonest_app
+        @students = Student.all
     end
 
     def new
@@ -42,6 +42,9 @@ class StudentsController < ApplicationController
             render 'edit'
         end
     end
+
+
+ 
 
     # def destroy
     #     Student.find(params[:id]).destroy

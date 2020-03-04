@@ -23,10 +23,10 @@ class TutorsController < ApplicationController
         end
     end
 
-    def search
-        @appointments = Appointment.seach(params[:query])
+   def search
+        @tutors = Tutor.search(params[:query])
         render :index
-    end
+     end
 
     private
 

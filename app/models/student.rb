@@ -1,7 +1,6 @@
 class Student < ApplicationRecord
 
 
-    scope :soonest_app, -> {order('created_at DESC')}
     
     before_save {self.email = email.downcase}
 
@@ -20,7 +19,7 @@ class Student < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 5 }, allow_blank: true
 
-    accepts_nested_attributes_for :tutors
+    # accepts_nested_attributes_for :tutors
 
 
     def self.create_by_google_omniauth(auth)

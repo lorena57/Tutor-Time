@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  get '/search' => 'tutors#search', :as => 'search_name'
 
 
 
