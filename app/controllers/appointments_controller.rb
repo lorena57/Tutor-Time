@@ -5,14 +5,14 @@ class AppointmentsController < ApplicationController
         if params[:student_id]
             @student = Student.find(params[:student_id])
             @appointments = current_student.appointments
-            @app = Appointment.all
+            @app = Appointment.desc_order
         else
             redirect_to root_url
         end
     end
 
     def new
-        if current_student.id == (params[:student_id])
+        if current_student.id == (params[:student_id]).to_i
             @student = current_student
             @appointment = @student.appointments.new
         else
@@ -22,15 +22,9 @@ class AppointmentsController < ApplicationController
 
     end
 
-    
-
-
-
-
     def create
         @student = Student.find(params[:student_id])
         @appointment = current_student.appointments.new(appointment_params)
-        # @appointment.student = Student.find_by(id: params[:student_id])
         if @appointment.save
             flash[:success]= "Appointment created"
             redirect_to student_path(@student)
@@ -60,10 +54,7 @@ class AppointmentsController < ApplicationController
         end
     end
 
-
-
     def destroy
-        #Keep method and dry 
         @appointment = current_student.appointments.find_by(params[:id])
         if @appointment
             @appointment.destroy    
@@ -74,6 +65,7 @@ class AppointmentsController < ApplicationController
             redirect_to student_path(current_student, @appointment)
         end
     end
+
 
     private
 

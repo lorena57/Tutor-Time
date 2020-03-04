@@ -1,6 +1,4 @@
 class Student < ApplicationRecord
-
-
     
     before_save {self.email = email.downcase}
 

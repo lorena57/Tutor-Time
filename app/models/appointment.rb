@@ -1,6 +1,6 @@
 class Appointment < ApplicationRecord
 
-    
+    scope :desc_order, ->  { order(appointment_time: :desc) }
     
     belongs_to :tutor
     belongs_to :student
