@@ -12,9 +12,17 @@ class AppointmentsController < ApplicationController
     end
 
     def new
-        @student = Student.find(params[:student_id])
-        @appointment = @student.appointments.new
+        if current_student.id == (params[:student_id])
+            @student = current_student
+            @appointment = @student.appointments.new
+        else
+            flash[:danger] = "You do not have access to create appointments for other users."
+            redirect_to student_path(params[:student_id])
+        end
+
     end
+
+    
 
 
 
