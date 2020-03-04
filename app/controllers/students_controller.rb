@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
     # before_action :admin_student, only: :destroy
 
     def index
-        @students = Student.all
+        @students = Student.all.soonest_app
     end
 
     def new

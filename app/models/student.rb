@@ -1,5 +1,8 @@
 class Student < ApplicationRecord
 
+
+    scope :soonest_app, -> {order('created_at DESC')}
+    
     before_save {self.email = email.downcase}
 
     validates :username, presence: true, length: { maximum: 20 }
@@ -21,7 +24,6 @@ class Student < ApplicationRecord
 
 
     def self.create_by_google_omniauth(auth)
-        
         self.find_or_create_by(username: auth[:info][:email]) do |u|
         u.email = auth[:info][:email]
         u.password = SecureRandom.hex

@@ -29,8 +29,8 @@ class AppointmentsController < ApplicationController
 
     def create
         @student = Student.find(params[:student_id])
-        @appointment = @student.appointments.new(appointment_params)
-        @appointment.student = Student.find_by(id: params[:student_id])
+        @appointment = current_student.appointments.new(appointment_params)
+        # @appointment.student = Student.find_by(id: params[:student_id])
         if @appointment.save
             flash[:success]= "Appointment created"
             redirect_to student_path(@student)
@@ -66,12 +66,11 @@ class AppointmentsController < ApplicationController
         #Keep method and dry 
         @appointment = current_student.appointments.find_by(params[:id])
         if @appointment
-        @appointment.destroy    
-            flash[:danger] = "Your appointment has been deleted"
-                redirect_to student_path(params[:student_id])
-
-            else
-                
+            @appointment.destroy    
+            flash[:success] = "Your appointment has been deleted"
+            redirect_to student_path(params[:student_id])
+        else
+            flash[:danger] = "You do not have access to delete others appointments"
             redirect_to student_path(params[:student_id])
         end
     end
@@ -81,5 +80,5 @@ class AppointmentsController < ApplicationController
     def appointment_params
         params.require(:appointment).permit(:appointment_time, :tutor_id)
     end
-    
+
 end
