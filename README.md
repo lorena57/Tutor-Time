@@ -1,7 +1,6 @@
 # Tutor-Time
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Application utilizing CRUD (Create, Read, Update, Delete), MVC (Model-View-Controller) app using Sinatra.
 
 Things you may want to cover:
 
