@@ -14,6 +14,8 @@ The application allows a student to create, view, delete, and update appointment
 The gem is available as open source under the terms of the MIT License.
 
 # Code of Conduct
+Everyone interacting in Tutor-Time codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
+
 
 
 
