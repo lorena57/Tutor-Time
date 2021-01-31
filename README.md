@@ -1,6 +1,8 @@
 # Tutor-Time
 
-Application utilizing CRUD (Create, Read, Update, Delete), MVC (Model-View-Controller) app using Sinatra.
+Sinatra framework application that utilizes the CRUD (Create, Read, Update, Delete), MVC (Model-View-Controller format.
+
+The application allows a student to create, view, delete, and update appointments with a tutor based on subject the tutor offers. 
 
 Things you may want to cover:
 
