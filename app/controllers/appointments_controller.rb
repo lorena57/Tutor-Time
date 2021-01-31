@@ -1,6 +1,5 @@
 class AppointmentsController < ApplicationController
 
-
     def index
         if params[:student_id]
             @student = Student.find(params[:student_id])
@@ -65,7 +64,6 @@ class AppointmentsController < ApplicationController
             redirect_to student_path(current_student, @appointment)
         end
     end
-
 
     private
 
