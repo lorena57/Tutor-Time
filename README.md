@@ -10,4 +10,10 @@ The application allows a student to create, view, delete, and update appointment
 2. rake db:migrate
 3. 
 
+# License
+The gem is available as open source under the terms of the MIT License.
+
+# Code of Conduct
+
+
 
