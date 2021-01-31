@@ -8,7 +8,8 @@ The application allows a student to create, view, delete, and update appointment
 
 1. bundle install
 2. rake db:migrate
-3. 
+3. Run $rails s 
+4. Open up browser to http://localhost:3000/
 
 # License
 The gem is available as open source under the terms of the MIT License.
