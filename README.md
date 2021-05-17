@@ -2,7 +2,7 @@
 
 
 
-![](images/TutTimeGit.png)
+![](app/assets/images/TutTimeGit.png)
 
 Sinatra framework application that utilizes the CRUD (Create, Read, Update, Delete), MVC (Model-View-Controller format.
 
