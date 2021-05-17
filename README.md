@@ -6,8 +6,6 @@ The application allows a student to create, view, delete, and update appointment
 
 ![](app/assets/images/TutorTimeGit.png)
 
-
-
 # Installation
 
 1. bundle install
