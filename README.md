@@ -1,24 +1,26 @@
-# README
+# Tutor-Time
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+![](app/assets/images/TutorTimeGit.png)
 
-* System dependencies
+Sinatra framework application that utilizes the CRUD (Create, Read, Update, Delete), MVC (Model-View-Controller format.
 
-* Configuration
+The application allows a student to create, view, delete, and update appointments with a tutor based on the subject that is  offered. 
 
-* Database creation
+# Installation
 
-* Database initialization
+1. bundle install
+2. rake db:migrate
+3. Run $rails s 
+4. Open up browser to http://localhost:3000/
 
-* How to run the test suite
+# License
+The gem is available as open source under the terms of the MIT License.
 
-* Services (job queues, cache servers, search engines, etc.)
+# Code of Conduct
+Everyone interacting in Tutor-Time codebases, issue trackers, chat rooms and mailing lists is expected to follow the code of conduct.
 
-* Deployment instructions
 
-* ...
+
+
